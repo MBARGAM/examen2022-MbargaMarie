@@ -1,20 +1,35 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+
+{% block title %}Listes des Chansons {% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <h1 class="mx-auto text-primary w-50 mt-5 mb-3">Listes des Chansons </h1>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    {% if listeChansons is defined %}
+        <table class="table table-striped w-50 mx-auto">
+            <thead>
+            <tr>
+                <th scope="col">N°</th>
+                <th scope="col">Titres</th>
+                <th scope="col">Auteurs</th>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/Users/justynmbarga/symfony/examen2022-MbargaMarie/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/Users/justynmbarga/symfony/examen2022-MbargaMarie/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>
-    </ul>
-</div>
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for data in listeChansons %}
+
+                {% set i = 1 %}
+                <tr>
+                    <th scope="row"><a href="{{ path('detailChansons',{id:data.id}) }}">{{ i }}</a></th>
+                    <td><a href="{{ path('detailChansons',{id:data.id}) }}">{{ data.__toString|capitalize }}</a></td>
+                    <td><a href="{{ path('detailChansons',{id:data.id}) }}">{{ data.auteur }}</a></td>
+                </tr>
+
+                {% set i = i+1 %}
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
 {% endblock %}

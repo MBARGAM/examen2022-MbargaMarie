@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}article choisi {% endblock %}
+
+{% block body %}
+    <h1 class="mx-auto text-primary w-50 mt-5 mb-3">Article Courant </h1>
+
+    {% if detailChansons is defined %}
+
+        {% set data = detailChansons %}
+        {% set dateSortie = data.dateSortie|date('d-m-Y') %}
+        {% set dateAjout = data.dateAjout|date('d-m-Y') %}
+        <table class="table table-striped w-75 mx-auto">
+            <thead>
+            <tr>
+                <th scope="col">N°</th>
+                <th scope="col">Titre</th>
+                <th scope="col">Nom de l'album</th>
+                <th scope="col">Paroles</th>
+                <th scope="col">Auteur</th>
+                <th scope="col">Genre</th>
+                <th scope="col">Date Ajout</th>
+                <th scope="col">Date sortie</th>
+            </tr>
+            </thead>
+            <tbody>
+
+                <tr>
+                    <th scope="row">N°{{ data.id }}</th>
+                    <th>{{ data.__toString|capitalize }}</th>
+                    <td>{{ data.nomAlbum|capitalize }}</td>
+                    <td>{{ data.paroles }}</td>
+                    <td>{{ data.auteur|capitalize }}</td>
+                    <td>{{ data.genre.nom|capitalize }}</td>
+                    <td>{{ dateAjout}}</td>
+                    <td>{{ dateSortie}}</td>
+
+                </tr>
+
+            </tbody>
+        </table>
+    {% endif %}
+{% endblock %}

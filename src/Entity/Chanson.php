@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ChansonRepository;
 use Doctrine\ORM\Mapping as ORM;
+use DateTime;
 
 /**
  * @ORM\Entity(repositoryClass=ChansonRepository::class)
@@ -40,7 +41,7 @@ class Chanson
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $votes;
+    private $votes=0;
 
     /**
      * @ORM\Column(type="date")
@@ -57,6 +58,12 @@ class Chanson
      * @ORM\JoinColumn(nullable=false)
      */
     private $genre;
+
+
+   public function __construct()
+   {
+       $this->dateAjout = new \DateTime();
+   }
 
     public function getId(): ?int
     {
@@ -157,5 +164,9 @@ class Chanson
         $this->genre = $genre;
 
         return $this;
+    }
+    public function __toString()
+    {
+        return $this->getTitre();
     }
 }

@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Listes des Genres{% endblock %}
+
+{% block body %}
+    <h1 class="mx-auto text-primary w-50 mt-5 mb-3">Listes des genres </h1>
+
+    {% if listeGenres is defined %}
+        {% set i = 1 %}
+        <table class="table table-striped w-50 mx-auto">
+            <thead>
+            <tr>
+                <th scope="col">N°</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Description</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            {% for data in listeGenres %}
+                <tr>
+                    <th scope="row">{{ i }}</th>
+                    <td>{{ data.__toString|capitalize }}</td>
+                    <td>{{ data.description }}</td>
+                </tr>
+                {% set i = i+1 %}
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endblock %}

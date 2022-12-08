@@ -38,6 +38,15 @@ class ChansonRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+    public function findAllChansons(){
+        return $this->createQueryBuilder('c')
+            ->orderBy('c.titre', 'ASC')
+            ->distinct(True)
+            ->getQuery()
+            ->getResult();
+
+
+    }
 
 //    /**
 //     * @return Chanson[] Returns an array of Chanson objects
