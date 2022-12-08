@@ -40,5 +40,13 @@
 
             </tbody>
         </table>
+        <div class="w-50 d-flex justify-content-between mx-auto">
+           <form method="post" action="{{ path('voter',{id:data.id}) }}" >
+               <button type="submit" name="action" value="vote" class="btn btn-primary">Voter</button>
+           </form>
+            <span><a href="{{ path('modifierChanson',{id:data.id}) }}"  class="btn btn-primary" >Modifier</a></span>
+            <span><a href="#"  class="btn btn-primary">Supprimer</a></span>
+
+        </div>
     {% endif %}
 {% endblock %}

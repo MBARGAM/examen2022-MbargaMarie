@@ -35,7 +35,7 @@ class GenreController extends AbstractController
             $entityManager->flush();
             return $this->redirectToRoute('listeDesGenres');
         }
-        return $this->renderForm('chansons/index.html.twig', [
+        return $this->renderForm('genre/index.html.twig', [
             'form' => $form,
         ]);
     }
